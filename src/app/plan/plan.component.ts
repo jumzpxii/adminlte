@@ -4,20 +4,16 @@ import { TeamserviceService } from '../shared/teamservice.service';
 @Component({
   selector: 'app-plan',
   templateUrl: './plan.component.html',
-  styleUrls: ['./plan.component.css']
+  styleUrls: ['./plan.component.css'],
 })
 export class PlanComponent implements OnInit {
-
-  constructor(private tds:TeamserviceService) {}
-
-  ngOnInit(): void {
-    this.insertData();
+  data: any;
+  constructor(private tds: TeamserviceService) {
+    this.tds.insertTeam('Jumjy', 'xxx@mail.com').subscribe(async (res) => {
+      this.data = res;
+      console.log(this.data);
+    });
   }
 
-  insertData(){
-    this.tds.insertTeam('Jumjy','xxx@mail.com').subscribe((res)=>{
-      console.log(res);
-    })
-  }
-
+  ngOnInit(): void {}
 }

@@ -2,7 +2,7 @@ const db = require("../connection/connect");
 
 exports.insertTeam = (req, res, next) => {
   const body = req.body;
-  // res.send(body)
+  res.json(body);
   console.log(body);
   next();
 };
