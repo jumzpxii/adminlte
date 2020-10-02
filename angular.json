@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "admin-lte"
+    }
+  },
+  "defaultProject": "admin-lte",
+  "cli": {
+    "analytics": false
+  }
 }
