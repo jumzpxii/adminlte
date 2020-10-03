@@ -1,33 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  title = 'app works!';
+  constructor() {}
 
-  constructor() { }
-
-  ngAfterViewInit(){
-        $(document).ready(function(){
-          $("p").click(function(){
-          $(this).hide();
-          });
-        });
+  ngAfterViewInit() {
+    $(document).ready(function () {
+      $('input[name="daterange"]').daterangepicker();
+    });
   }
 
-  ngOnInit(): void {
-  }
-
-  selectDate(){
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-  }
+  ngOnInit(): void {}
 }
