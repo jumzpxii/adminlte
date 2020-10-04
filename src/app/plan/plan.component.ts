@@ -7,11 +7,20 @@ import { TeamserviceService } from '../shared/teamservice.service';
   styleUrls: ['./plan.component.css'],
 })
 export class PlanComponent implements OnInit {
-  data: any;
+  teamData: any = { status: '', data: '' };
   constructor(private tds: TeamserviceService) {
     this.tds.insertTeam('Jumjy', 'xxx@mail.com').subscribe(async (res) => {
-      this.data = res;
-      console.log(this.data);
+      const { count, tag, zone } = await res.data.zones[0].tags[0];
+      this.teamData = {
+        status: 'success',
+        data: {
+          personCount: count / 60,
+          personTag: tag,
+          personUnit: 'นาที',
+          personZone: zone,
+        },
+      };
+      // console.log(typeof this.teamData);
     });
   }
 
