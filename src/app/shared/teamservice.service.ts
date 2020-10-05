@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'
 })
 export class TeamserviceService {
 
-  uri = 'http://localhost:3000/team/insert'
+  uri = 'http://localhost:3000/team'
 
   constructor(private http:HttpClient) { }
 
@@ -16,7 +16,17 @@ export class TeamserviceService {
       name: name,
       email: email
     };
-    return this.http.post(this.uri,body);
+    return this.http.post(`${this.uri}/insert`,body);
+  }
+
+  getTag(tag:Array<string>):Observable<any>{
+    const body = [...tag];
+    return this.http.post(`${this.uri}/gettags`,body)
+  }
+
+  insertTags(tag:any){
+    const body = tag
+    return this.http.post(`${this.uri}/addtags`,body)
   }
 
 }

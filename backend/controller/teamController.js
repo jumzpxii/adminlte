@@ -44,9 +44,21 @@ const data = {
         ],
         tags: [
           {
-            count: 116.68399953842163,
+            count: 80.68399953842163,
             zone: "Offensive 3 Pts",
             tag: "Imu1",
+            unit: "s",
+          },
+          {
+            count: 116.68399953842163,
+            zone: "Offensive 3 Pts",
+            tag: "Imu2",
+            unit: "s",
+          },
+          {
+            count: 96.68399953842163,
+            zone: "Offensive 3 Pts",
+            tag: "Imu3",
             unit: "s",
           },
         ],
@@ -60,11 +72,29 @@ const data = {
 };
 exports.insertTeam = (req, res, next) => {
   const body = req.body;
-  res.json(data);
+  return res.json(data);
   // console.log(body);
   next();
 };
 
 exports.getIndex = (req, res) => {
-  res.send("xxxx");
+  return res.send("xxxx");
 };
+
+exports.tags = (req,res) => {
+  return res.json(data)
+}
+
+exports.addtags = (req,res) => {
+  const {count,zone,tag} = req.body
+  let sql = "INSERT INTO tag_person (tag_id,tag_name,zone,times) VALUES ?"
+  let value = [
+    ['TAX001',tag,zone,count.toString()]
+  ]
+
+  db.query(sql,[value],(err,result)=>{
+    if(err) throw err
+    res.json("success");
+  })
+  // db.end();
+}
