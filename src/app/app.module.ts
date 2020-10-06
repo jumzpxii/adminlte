@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { PlanComponent } from './plan/plan.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { MacthComponent } from './macth/macth.component';
+import { ChartsModule } from 'ng2-charts';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +22,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     MenuComponent,
     HomeComponent,
     PlanComponent,
+    MacthComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,16 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+    ChartsModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
