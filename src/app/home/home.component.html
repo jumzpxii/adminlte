@@ -26,7 +26,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form role="form">
+          <form role="form" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
             <div class="card-body">
               <!-- Date and time range -->
               <div class="form-group">
@@ -41,16 +41,17 @@
                   <input
                     type="text"
                     class="form-control float-right"
-                    name="daterange"
+                    name="times"
+                    id="daterange"
                   />
                 </div>
                 <!-- /.input group -->
               </div>
-              <label>Tags Lits:</label>
 
+              <label>Tags Lits:</label>
               <div
                 class="form-group row"
-                *ngFor="let t of [0, 1, 2, 3]; let i = index"
+                *ngFor="let t of tags; let i = index"
               >
                 <label class="col-sm-1 col-form-label">Tag</label>
                 <div class="col-sm-5">
@@ -58,20 +59,22 @@
                     type="text"
                     class="form-control"
                     placeholder="Tag ID"
+                    [value]="t.name"
+                    name="tagName"
+                    disabled
                   />
                 </div>
                 <label class="col-sm-1 col-form-label">Player</label>
-                <div class="col-sm-5">
-                  <select class="form-control select2bs4" style="width: 100%">
-                    <option>Chose Player</option>
-                    <option
-                      *ngFor="let p of person; let j = index"
-                      [value]="p.id"
-                    >
-                      {{ p.name }} {{ j + 1 }}
-                    </option>
-                  </select>
-                </div>
+                  <div class="col-sm-5">
+                    <angular2-multiselect
+                      name="ply{{t.id}}"
+                      [data]="dropdownList"
+                      [(ngModel)]="selectedItems[t.id]"
+                      [settings]="dropdownSettings"
+                      (onSelect)="onItemSelect($event, t.id)"
+                      (onDeSelect)="OnItemDeSelect($event,t.id)" disabled>
+                    </angular2-multiselect>
+                  </div>
               </div>
             </div>
             <!-- /.card-body -->

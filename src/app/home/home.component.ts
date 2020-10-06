@@ -1,40 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 declare var $: any;
-const options1: any[] = ['1-1', '1-2', '1-3', '1-4', '1-5'];
-const options2: any[] = ['2-1', '2-2', '2-3', '2-4', '2-5'];
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  options: any[] = options1;
-  optionSelected: any;
-  optionsSelected: any;
-  settingsOptionSelected: any;
-  inputVal: string = '';
-  settings: any = {
-    placeholder: 'Changing the settings',
-    data: [
-      { id: 1, text: '1' },
-      { id: 2, text: '2' },
-    ],
-    width: '50%',
-  };
-
-  person: any = [
-    { id: '1', name: 'PlayerA' },
-    { id: '2', name: 'PlayerB' },
-    { id: '3', name: 'PlayerC' },
-    { id: '4', name: 'PlayerD' },
-    { id: '5', name: 'PlayerE' },
+  dataset:any;
+  dropdownList = [];
+  selectedItems: Map<string, Array<any>>;
+  dropdownSettings = {};
+  tags = [
+    { id: '1', name: 'TAG1' },
+    { id: '2', name: 'TAG2' },
+    { id: '3', name: 'TAG3' },
+    { id: '4', name: 'TAG4' },
   ];
 
   constructor() {}
 
+
   ngAfterViewInit() {
     $(document).ready(function () {
-      $('input[name="daterange"]').daterangepicker({
+      $('#daterange').daterangepicker({
         timePicker: true,
         timePicker24Hour: true,
         timePickerSeconds: true,
@@ -43,41 +33,50 @@ export class HomeComponent implements OnInit {
           language: 'th',
         },
       });
-      $('.select2bs4').select2({
-        theme: 'bootstrap4',
-      });
-      // $('.select2bs4').on('select2:select', function (e) {
-      //   let data = e.params.data;
-      //   data.text = data.text + '(เลือกแล้ว)';
-      //   console.log(data);
-      // });
     });
   }
 
-  ngOnInit(): void {}
-  onSelect({ id, text }) {
-    alert(`id: ${id}, text: ${text}`);
-    console.log(this.optionSelected);
+  ngOnInit(): void {
+    this.selectedItems = new Map<string, Array<any>>();
+    // this.tags
+    this.dropdownList = [
+                          { id: 1, itemName: 'PlayerA'},
+                          { id: 2, itemName: 'PlayerB'},
+                          { id: 3, itemName: 'PlayerC'},
+                          { id: 4, itemName: 'PlayerD'},
+                          { id: 5, itemName: 'PlayerE'},
+                        ];
+
+    this.dropdownSettings = {
+                              singleSelection: true,
+                              text:"Select Player",
+                              enableSearchFilter: true,
+                              classes:"from-control"
+                            };
+
+                      console.log(this.selectedItems)
+  }
+  onItemSelect(item:any){
+      console.log(item["itemName"]);
+      console.log(this.selectedItems);
+  }
+  OnItemDeSelect(item:any){
+      console.log(item);
+      console.log(this.selectedItems);
   }
 
-  changeOptions() {
-    this.options = this.options == options1 ? options2 : options1;
-    console.log(this.options);
+  submitTag(e:any){
+    console.log(e);
   }
 
-  changeValue() {
-    this.optionSelected = this.inputVal;
-    this.optionsSelected = [this.inputVal];
-  }
+  onSubmit(val:any){
+    console.log(val.times);
 
-  changeSettings() {
-    this.settings = {
-      placeholder: 'Changing the settings',
-      data: [
-        { id: 3, text: '3' },
-        { id: 4, text: '4' },
-      ],
-      width: '50%',
-    };
+    // this.dataset = val;
+    // console.log(this.dataset);
+
+    // const data = val.map(res => res.json())
+    // console.log(data);
+
   }
 }
