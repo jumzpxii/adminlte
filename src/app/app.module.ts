@@ -15,6 +15,8 @@ import { MacthComponent } from './macth/macth.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { ProfileComponent } from './profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     AngularMultiSelectModule,
     ChartsModule,
+    DateInputsModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
       backdropBackgroundColour: 'rgba(0,0,0,0.1)',
@@ -42,6 +45,7 @@ import { ProfileComponent } from './profile/profile.component';
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff',
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

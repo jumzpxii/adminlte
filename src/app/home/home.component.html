@@ -33,29 +33,36 @@
             (ngSubmit)="onSubmit(searchForm.value)"
           >
             <div class="card-body">
-              <!-- Date and time range -->
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="far fa-clock"></i
-                    ></span>
-                  </div>
-                  <input
-                    type="text"
-                    class="form-control float-right"
-                    name="times"
-                    id="daterange"
-                  />
-                </div>
-                <!-- /.input group -->
+              <div class="example-config">
+                Selected value is: {{ startDate | date: format }} -
+                {{ endDate | date: format }}
               </div>
-
+              <div class="row">
+                <div class="col">
+                  <div class="example-wrapper">
+                    <p>Start Date</p>
+                    <kendo-datetimepicker
+                      [format]="format"
+                      [(value)]="startDate"
+                    >
+                    </kendo-datetimepicker>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="example-wrapper">
+                    <p>End Date</p>
+                    <kendo-datetimepicker [format]="format" [(value)]="endDate">
+                    </kendo-datetimepicker>
+                  </div>
+                </div>
+              </div>
               <label>Tags Lits:</label>
               <div class="form-group row" *ngFor="let t of tags; let i = index">
                 <label class="col-sm-1 col-form-label">Tag</label>
                 <div class="col-sm-5">
                   <input
+                    ngModel
+                    #tagname="ngModel"
                     type="text"
                     class="form-control"
                     placeholder="Tag ID"
@@ -71,9 +78,9 @@
                     [data]="dropdownList"
                     [(ngModel)]="selectedItems[t.id]"
                     [settings]="dropdownSettings"
-                    (onSelect)="onItemSelect($event, t.id)"
+                    (onSelect)="onItemSelect($event)"
                     (onDeSelect)="OnItemDeSelect($event)"
-                    (onDeSelectAll)="onDeSelectAll($event,t.id)"
+                    (onDeSelectAll)="onDeSelectAll($event)"
                   >
                   </angular2-multiselect>
                 </div>
