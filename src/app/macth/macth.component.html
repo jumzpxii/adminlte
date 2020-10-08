@@ -15,10 +15,10 @@
   <div class="card-body">
     <div class="row">
       <!-- col -->
-      <div class="col-md-4">
+      <div class="col-md-4" *ngFor="let bar of topic">
         <div class="card card-success">
           <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
+            <h3 class="card-title">{{ bar }}</h3>
           </div>
           <div class="card-body">
             <div style="display: block">
@@ -36,117 +36,7 @@
           </div>
         </div>
       </div>
-      <!-- col -->
-      <div class="col-md-4">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
-          </div>
-          <div class="card-body">
-            <div style="display: block">
-              <canvas
-                baseChart
-                height="150"
-                [datasets]="barChartData2"
-                [labels]="barChartLabels2"
-                [options]="barChartOptions2"
-                [legend]="barChartLegend2"
-                [chartType]="barChartType2"
-              >
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- col -->
-      <div class="col-md-4">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
-          </div>
-          <div class="card-body">
-            <div style="display: block">
-              <canvas
-                baseChart
-                height="150"
-                [datasets]="barChartData3"
-                [labels]="barChartLabels3"
-                [options]="barChartOptions3"
-                [legend]="barChartLegend3"
-                [chartType]="barChartType3"
-              >
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- col -->
-      <div class="col-md-4">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
-          </div>
-          <div class="card-body">
-            <div style="display: block">
-              <canvas
-                baseChart
-                height="150"
-                [datasets]="barChartData4"
-                [labels]="barChartLabels4"
-                [options]="barChartOptions4"
-                [legend]="barChartLegend4"
-                [chartType]="barChartType4"
-              >
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- col -->
-      <div class="col-md-4">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
-          </div>
-          <div class="card-body">
-            <div style="display: block">
-              <canvas
-                baseChart
-                height="150"
-                [datasets]="barChartData5"
-                [labels]="barChartLabels5"
-                [options]="barChartOptions5"
-                [legend]="barChartLegend5"
-                [chartType]="barChartType5"
-              >
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- col -->
-      <div class="col-md-4">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Bar Chart</h3>
-          </div>
-          <div class="card-body">
-            <div style="display: block">
-              <canvas
-                baseChart
-                height="150"
-                [datasets]="barChartData6"
-                [labels]="barChartLabels6"
-                [options]="barChartOptions6"
-                [legend]="barChartLegend6"
-                [chartType]="barChartType6"
-              >
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- col -->
+
     </div>
   </div>
 </div>

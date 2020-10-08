@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild,OnInit,ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TeamserviceService } from '../shared/teamservice.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ declare var $: any;
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public loading = false;
+
+  loading = false;
   dataset: any = {};
   tag: Array<string> = ['Imu1', 'Imu2', 'Imu3'];
   times: string;
@@ -55,19 +56,25 @@ export class HomeComponent implements OnInit {
       singleSelection: true,
       text: 'Select Player',
       enableSearchFilter: true,
-      classes: 'from-control',
+      classes: '',
     };
 
     console.log(this.selectedItems);
   }
   onItemSelect(item: any) {
-    console.log(item['itemName']);
-    console.log(this.selectedItems);
-  }
-  OnItemDeSelect(item: any) {
     console.log(item);
     console.log(this.selectedItems);
   }
+  OnItemDeSelect(item:any){
+    console.log("delte",item);
+    console.log(this.selectedItems);
+  }
+
+  onDeSelectAll(items: any){
+      console.log(items);
+  }
+
+
 
   onSubmit(val: any) {
     let selectElement = document.querySelector<HTMLInputElement>(
@@ -84,6 +91,8 @@ export class HomeComponent implements OnInit {
     this.tds.getTag(this.tag).subscribe((res) => {
       this.loading = false;
       this.router.navigate(['/macth']);
+    },(err)=>{
+      this.loading = false;
     });
   }
 }

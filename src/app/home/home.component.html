@@ -35,8 +35,6 @@
             <div class="card-body">
               <!-- Date and time range -->
               <div class="form-group">
-                <label>เวลาแข่งขัน:</label>
-
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"
@@ -74,8 +72,8 @@
                     [(ngModel)]="selectedItems[t.id]"
                     [settings]="dropdownSettings"
                     (onSelect)="onItemSelect($event, t.id)"
-                    (onDeSelect)="OnItemDeSelect($event, t.id)"
-                    disabled
+                    (onDeSelect)="OnItemDeSelect($event)"
+                    (onDeSelectAll)="onDeSelectAll($event,t.id)"
                   >
                   </angular2-multiselect>
                 </div>
@@ -88,7 +86,6 @@
               </button>
             </div>
           </form>
-          <button (click)="getTags()">Gettags</button>
         </div>
         <!-- /.card -->
       </div>

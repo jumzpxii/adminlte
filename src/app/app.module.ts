@@ -14,6 +14,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { MacthComponent } from './macth/macth.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     HomeComponent,
     PlanComponent,
     MacthComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PlanComponent } from './plan/plan.component';
 import { MacthComponent } from './macth/macth.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'macth',
     component: MacthComponent,
   },
+  {
+    path:'profile',
+    component:ProfileComponent
+  }
 ];
 
 @NgModule({
