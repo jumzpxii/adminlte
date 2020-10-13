@@ -17,6 +17,16 @@ export class MenuComponent implements OnInit {
       title: 'Plan',
       url: '/plan',
       icon: 'far fa-circle nav-icon'
+    },
+    {
+      title: 'Players',
+      url: '/player',
+      icon: 'far fa-circle nav-icon'
+    },
+    {
+      title: 'Register',
+      url: '/register',
+      icon: 'far fa-circle nav-icon'
     }
   ]
 

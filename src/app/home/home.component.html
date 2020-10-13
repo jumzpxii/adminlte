@@ -23,34 +23,31 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Quick Example</h3>
+            <h3 class="card-title">Tags Option</h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form
-            role="form"
-            #searchForm="ngForm"
-            (ngSubmit)="onSubmit(searchForm.value)"
-          >
+          <form role="form" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
             <div class="card-body">
-              <div class="example-config">
+              <div class="form-group">
+                <label class="col-form-label" for="inputSuccess"><i class="fas fa-group"></i>ชื่อทีม</label>
+                <input type="text" name="teamname" class="form-control" placeholder="หมูป่า ..." />
+              </div>
+              <!-- <div class="example-config">
                 Selected value is: {{ startDate | date: format }} -
                 {{ endDate | date: format }}
-              </div>
-              <div class="row">
+              </div> -->
+              <div class="row mb-4">
                 <div class="col">
                   <div class="example-wrapper">
-                    <p>Start Date</p>
-                    <kendo-datetimepicker
-                      [format]="format"
-                      [(value)]="startDate"
-                    >
+                    <b>Start Date</b> :
+                    <kendo-datetimepicker [format]="format" [(value)]="startDate">
                     </kendo-datetimepicker>
                   </div>
                 </div>
                 <div class="col">
                   <div class="example-wrapper">
-                    <p>End Date</p>
+                    <b>End Date</b> :
                     <kendo-datetimepicker [format]="format" [(value)]="endDate">
                     </kendo-datetimepicker>
                   </div>
@@ -58,30 +55,15 @@
               </div>
               <label>Tags Lits:</label>
               <div class="form-group row" *ngFor="let t of tags; let i = index">
-                <label class="col-sm-1 col-form-label">Tag</label>
+                <label class="col-sm-1 col-form-label">Tag {{ i + 1 }}</label>
                 <div class="col-sm-5">
-                  <input
-                    ngModel
-                    #tagname="ngModel"
-                    type="text"
-                    class="form-control"
-                    placeholder="Tag ID"
-                    [value]="t.name"
-                    name="tagName"
-                    disabled
-                  />
+                  <input type="text" id="tagId-{{ t.id }}" class="form-control" placeholder="Tag ID" [value]="t.name" />
                 </div>
                 <label class="col-sm-1 col-form-label">Player</label>
                 <div class="col-sm-5">
-                  <angular2-multiselect
-                    name="ply{{ t.id }}"
-                    [data]="dropdownList"
-                    [(ngModel)]="selectedItems[t.id]"
-                    [settings]="dropdownSettings"
-                    (onSelect)="onItemSelect($event)"
-                    (onDeSelect)="OnItemDeSelect($event)"
-                    (onDeSelectAll)="onDeSelectAll($event)"
-                  >
+                  <angular2-multiselect name="ply{{ t.id }}" [data]="dropdownList" [(ngModel)]="selectedItems[t.id]"
+                    [settings]="dropdownSettings" (onSelect)="onItemSelect($event, t.id)"
+                    (onDeSelect)="OnItemDeSelect($event, t.id)">
                   </angular2-multiselect>
                 </div>
               </div>
@@ -89,7 +71,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <button type="submit" class="btn btn-primary float-right">
-                Submit
+                ค้นหาข้อมูล
               </button>
             </div>
           </form>
@@ -101,9 +83,6 @@
     <!-- /.row (main row) -->
   </div>
   <!-- /.container-fluid -->
-  <ngx-loading
-    [show]="loading"
-    [config]="{ backdropBorderRadius: '3px' }"
-    [template]="customLoadingTemplate"
-  ></ngx-loading>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
+  </ngx-loading>
 </section>

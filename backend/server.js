@@ -2,6 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const teamRoute = require("./rotues/team");
+const playerRoute = require("./rotues/player");
 // const db = require('./connection/connect');
 const port = process.env.PORT || 3000;
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.options("*", cors());
 
 app.use("/team", teamRoute);
+app.use("/player", playerRoute);
 
 app.listen(port, function () {
   console.log(`server is : http://localhost:${port}`);

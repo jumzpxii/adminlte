@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
-import { NgForm, FormControl, FormGroup } from '@angular/forms';
+import { NgForm, FormControl, FormGroup,ReactiveFormsModule } from '@angular/forms';
 import { TeamserviceService } from '../shared/teamservice.service';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -10,16 +10,15 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   loading = false;
-  dataset: any = {};
+  dataApi: any = {
+    lid:[],
+    rid:["z2"],
+    output:3,
+    from:"",
+    to:""
+  };
   tag: Array<string> = ['Imu1', 'Imu2', 'Imu3'];
   times: string;
-  listItem = [
-    { id: 1, itemName: 'PlayerA' },
-    { id: 2, itemName: 'PlayerB' },
-    { id: 3, itemName: 'PlayerC' },
-    { id: 4, itemName: 'PlayerD' },
-    { id: 5, itemName: 'PlayerE' },
-  ];
   dropdownList = [
     { id: 1, itemName: 'PlayerA' },
     { id: 2, itemName: 'PlayerB' },
@@ -47,35 +46,25 @@ export class HomeComponent implements OnInit {
   format: string = 'dd/MM/yyyy HH:mm';
 
   constructor(private tds: TeamserviceService, private router: Router) {}
-  clear() {
-    this.dropdownList = this.listItem;
-  }
+
   ngAfterViewInit() {}
 
   ngOnInit(): void {
-    $(document).ready(function () {
-      $('span[class="c-angle-down"]').click(function () {
-        alert('xxxx');
-      });
-    });
-
     this.selectedItems = new Map<string, Array<any>>();
 
-    // this.tags
+    this.tags
 
     console.log(this.selectedItems);
   }
   onItemSelect(item: any) {
-    let itemIndex = this.dropdownList.indexOf(item);
-    // this.dropdownList.splice(itemIndex, 1);
-    // console.log(item); {id:1,itemName:sss}
+    console.log('onItemSelect',item)
+    console.log(this.selectedItems);
   }
   OnItemDeSelect(item: any) {
     console.log('OnItemDeSelect', item);
   }
 
   onDeSelectAll(items: any) {
-    this.clear();
     console.log('onDeSelectAll->>', items);
   }
 
@@ -105,7 +94,5 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  onFilterChange(e: any) {
-    console.log(e);
-  }
+
 }

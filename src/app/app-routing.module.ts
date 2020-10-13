@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { PlanComponent } from './plan/plan.component';
 import { MacthComponent } from './macth/macth.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PlayerComponent } from './player/player.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,16 @@ const routes: Routes = [
     component: MacthComponent,
   },
   {
-    path:'profile',
-    component:ProfileComponent
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'player',
+    component: PlayerComponent
   }
 ];
 
@@ -35,4 +45,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

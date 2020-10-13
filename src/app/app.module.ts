@@ -17,6 +17,9 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { DataTablesModule } from 'angular-datatables';
+import { PlayerComponent } from './player/player.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,8 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     PlanComponent,
     MacthComponent,
     ProfileComponent,
+    PlayerComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +51,9 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
       tertiaryColour: '#ffffff',
     }),
     BrowserAnimationsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
