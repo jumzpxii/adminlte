@@ -31,7 +31,10 @@
             <div class="card-body">
               <div class="form-group">
                 <label class="col-form-label" for="inputSuccess"><i class="fas fa-group"></i>ชื่อทีม</label>
-                <input type="text" name="teamname" class="form-control" placeholder="หมูป่า ..." />
+                <input type="text" name="teamname" class="form-control" placeholder="หมูป่า ..." [formControl]="name" />
+                <p>
+                  Value: {{ name.value }}
+                </p>
               </div>
               <!-- <div class="example-config">
                 Selected value is: {{ startDate | date: format }} -

@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
-import { NgForm, FormControl, FormGroup,ReactiveFormsModule } from '@angular/forms';
+import { NgForm, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TeamserviceService } from '../shared/teamservice.service';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -11,11 +11,11 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   loading = false;
   dataApi: any = {
-    lid:[],
-    rid:["z2"],
-    output:3,
-    from:"",
-    to:""
+    lid: [],
+    rid: ["z2"],
+    output: 3,
+    from: "",
+    to: ""
   };
   tag: Array<string> = ['Imu1', 'Imu2', 'Imu3'];
   times: string;
@@ -44,10 +44,10 @@ export class HomeComponent implements OnInit {
   startDate: Date = new Date();
   endDate: Date = new Date();
   format: string = 'dd/MM/yyyy HH:mm';
+  name = new FormControl('');
+  constructor(private tds: TeamserviceService, private router: Router) { }
 
-  constructor(private tds: TeamserviceService, private router: Router) {}
-
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   ngOnInit(): void {
     this.selectedItems = new Map<string, Array<any>>();
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
     console.log(this.selectedItems);
   }
   onItemSelect(item: any) {
-    console.log('onItemSelect',item)
+    console.log('onItemSelect', item)
     console.log(this.selectedItems);
   }
   OnItemDeSelect(item: any) {
