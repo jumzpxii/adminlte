@@ -20,6 +20,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DataTablesModule } from 'angular-datatables';
 import { PlayerComponent } from './player/player.component';
 import { RegisterComponent } from './register/register.component';
+import { CreateComponent } from './create/create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     ProfileComponent,
     PlayerComponent,
     RegisterComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,

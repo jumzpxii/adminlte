@@ -9,6 +9,11 @@ export class MenuComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
+      title: 'New Macth',
+      url: '/create',
+      icon: 'nav-icon fas fa-plus'
+    },
+    {
       title: 'Home',
       url: '/home',
       icon: 'nav-icon fas fa-th'

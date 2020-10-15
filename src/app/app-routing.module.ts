@@ -7,6 +7,7 @@ import { MacthComponent } from './macth/macth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlayerComponent } from './player/player.component';
 import { RegisterComponent } from './register/register.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'player',
     component: PlayerComponent
+  },
+  {
+    path: 'create',
+    component: CreateComponent
   }
 ];
 
