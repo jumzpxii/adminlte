@@ -6,11 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
-import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlanComponent } from './plan/plan.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { MacthComponent } from './macth/macth.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
@@ -21,13 +19,13 @@ import { DataTablesModule } from 'angular-datatables';
 import { PlayerComponent } from './player/player.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    HomeComponent,
     PlanComponent,
     MacthComponent,
     ProfileComponent,
@@ -41,7 +39,7 @@ import { CreateComponent } from './create/create.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMultiSelectModule,
+    NgSelectModule,
     ChartsModule,
     DateInputsModule,
     NgxLoadingModule.forRoot({

@@ -14,11 +14,6 @@ export class MenuComponent implements OnInit {
       icon: 'nav-icon fas fa-plus'
     },
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'nav-icon fas fa-th'
-    },
-    {
       title: 'Plan',
       url: '/plan',
       icon: 'far fa-circle nav-icon'

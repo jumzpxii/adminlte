@@ -27,11 +27,12 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form (ngSubmit)="submitForm()">
+          <form [formGroup]="dataset" (ngSubmit)="submitForm()">
             <div class="card-body">
               <div class="form-group">
                 <label class="col-form-label" for="inputSuccess"><i class="fas fa-group"></i>ชื่อทีม</label>
-                <input type="text" name="teamname" class="form-control" placeholder="หมูป่า ..." />
+                <input type="text" name="teamname" class="form-control" placeholder="หมูป่า ..."
+                  formControlName="teamName" />
               </div>
 
               <div class="row mb-4">
@@ -51,14 +52,18 @@
                 </div>
               </div>
               <label>Tags Lits:</label>
-              <div class="form-group row">
-                <label class="col-sm-1 col-form-label">Tag</label>
+              <div class="form-group row" *ngFor="let t of tags;let i = index">
+                <label class="col-sm-1 col-form-label">Tag {{ i +1 }}</label>
                 <div class="col-sm-5">
-
+                  <ng-select class="custom" [items]="tags" [(ngModel)]="tagSelected[i]"
+                    [ngModelOptions]="{standalone: true}" placeholder="Select TagID" (change)="onChangeTag()">
+                  </ng-select>
                 </div>
                 <label class="col-sm-1 col-form-label">Player</label>
                 <div class="col-sm-5">
-
+                  <ng-select class="custom" [items]="players" [(ngModel)]="plySelected[i]"
+                    [ngModelOptions]="{standalone: true}" placeholder="Select TagID" (change)="onChangePly()">
+                  </ng-select>
                 </div>
               </div>
             </div>
