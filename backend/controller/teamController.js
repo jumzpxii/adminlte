@@ -577,17 +577,23 @@ const zoneres = {
   "type":"zoneMap",
   "id":0
 }
-exports.insertTeam = (req, res, next) => {
-  // const body = req.body;
-  // console.log(body.startDate);
-  // const sdate = req.body.startDate
-  let format = req.body.startDate
-  console.log('format=>',format)
-  let sdate = moment(format).format('YYYY-MM-DD HH:mm:ss')
-  console.log('format=>',sdate)
+exports.insertTeam = (req, res) => {
 
-  return res.json(sdate);
-  next();
+  var dataset = [];
+  const zone = zoneres.data.zones;
+
+  for(let i = 0; i < zone.length ; i++){
+    const tag = zone[i].tags;
+    for(let j = 0; j < tag.length; j ++){
+        dataset.push(tag[j].count)
+        console.log('dataset->>',dataset);
+    }
+  }
+  let sql = 'INSERT INTO data_tag (def3,def2,off3,off2) VALUES ?';
+  db.query(sql,[dataset],(err,result)=>{
+    if(err) throw err;
+    return res.json({status:'Success'});
+  })
 };
 
 exports.searchApi = (req, res, next) => {

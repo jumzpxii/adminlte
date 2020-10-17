@@ -15,17 +15,17 @@ export class CreateComponent implements OnInit {
   plySelected: any = [];
 
   players = [
-    { value: 1, label: 'PlayerA' },
-    { value: 2, label: 'PlayerB' },
-    { value: 3, label: 'PlayerC' },
-    { value: 4, label: 'PlayerD' },
-    { value: 5, label: 'PlayerE' },
+    { pid: 1, name: 'PlayerA' },
+    { pid: 2, name: 'PlayerB' },
+    { pid: 3, name: 'PlayerC' },
+    { pid: 4, name: 'PlayerD' },
+    { pid: 5, name: 'PlayerE' },
   ]
   tags = [
-    { value: '1', label: 'Imu1' },
-    { value: '2', label: 'Imu2' },
-    { value: '3', label: 'Imu3' },
-    { value: '4', label: 'Imu4' },
+    { tid: 1, name: 'Imu1' },
+    { tid: 2, name: 'Imu2' },
+    { tid: 3, name: 'Imu3' },
+    { tid: 4, name: 'Imu4' },
   ];
   startDate: Date = new Date();
   endDate: Date = new Date();
@@ -41,27 +41,33 @@ export class CreateComponent implements OnInit {
     })
   }
   ngOnInit(): void { }
-  onChangeTag() {
-    console.log('Tag->>', this.tagSelected);
-  }
-  onChangePly() {
-    console.log('Ply->>', this.plySelected);
-  }
+  // onChangeTag() {
+  //   console.log('Tag->>', this.tagSelected);
+  // }
+  // onChangePly() {
+  //   console.log('Ply->>', this.plySelected);
+  // }
   submitForm() {
     this.loading = true;
-    this.tds.createTeam(this.dataset.value).subscribe(res => {
-      if (res) {
-        console.log('res->>', res);
-        this.searchAPI(this.dataset.value);
+    this.tds.createTeam(this.dataset.value).subscribe(
+      async (res) => {
+        if (res) {
+          console.log('res->>', res);
+          await this.searchAPI(this.dataset.value);
+          this.loading = false;
+        }
+      }, (err) => {
         this.loading = false;
-      }
-    })
+      })
     // console.log(this.dataset.value);
   }
   searchAPI(data: any) {
     this.tds.searApi(data).subscribe(res => {
       console.log('Api=>', res);
     })
+  }
+  multiData() {
+
   }
   // output ///
   // lid: [],

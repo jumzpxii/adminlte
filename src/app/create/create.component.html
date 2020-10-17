@@ -55,14 +55,14 @@
               <div class="form-group row" *ngFor="let t of tags;let i = index">
                 <label class="col-sm-1 col-form-label">Tag {{ i +1 }}</label>
                 <div class="col-sm-5">
-                  <ng-select class="custom" [items]="tags" [(ngModel)]="tagSelected[i]"
-                    [ngModelOptions]="{standalone: true}" placeholder="Select TagID" (change)="onChangeTag()">
+                  <ng-select class="custom" [items]="tags" [(ngModel)]="tagSelected[i]" bindLabel="name"
+                    bindValue="name" [ngModelOptions]="{standalone: true}" placeholder="Select TagID">
                   </ng-select>
                 </div>
                 <label class="col-sm-1 col-form-label">Player</label>
                 <div class="col-sm-5">
-                  <ng-select class="custom" [items]="players" [(ngModel)]="plySelected[i]"
-                    [ngModelOptions]="{standalone: true}" placeholder="Select TagID" (change)="onChangePly()">
+                  <ng-select class="custom" [items]="players" [(ngModel)]="plySelected[i]" bindLabel="name"
+                    bindValue="name" [ngModelOptions]="{standalone: true}" placeholder="Select Player">
                   </ng-select>
                 </div>
               </div>
