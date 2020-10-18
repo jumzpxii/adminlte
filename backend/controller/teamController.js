@@ -7,7 +7,7 @@ const speed = require('../fakedata/speed')
 const distanFn = (dt) =>{
   var distanData = [];
   const leng = dt.length
-  for(i = 0;i < leng; i++){
+  for(let i = 0;i < leng; i++){
     const val = dt[i].values
     let lastArr = val[val.length-1];
     distanData.push([lastArr.value])
@@ -18,7 +18,7 @@ const distanFn = (dt) =>{
 const speedFn = (sp) =>{
   var speedData = [];
   const leng = sp.length;
-  for(i = 0;i < leng; i++){
+  for(let i = 0;i < leng; i++){
     const val = sp[i].values
     var maxVal = Math.max(...val.map(m=>m.value));
     speedData.push([maxVal]);
@@ -70,14 +70,11 @@ exports.insertTeam = (req, res) => {
 
 exports.searchApi = (req, res, next) => {
   const body = req.body;
-
   return res.json({
-    zoneX:zone,
-    distanX:distance,
-    speedX:speed
+    zoneX:zone.data.zones,
+    distanX:distance.data,
+    speedX:speed.data
   });
-  // console.log(body);
-  next();
 };
 
 exports.addtags = (req,res) => {

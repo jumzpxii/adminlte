@@ -19,9 +19,9 @@ export class TeamService {
   // startDate: this.startDate,
   // endDate: this.endDate,
   searApi(data: any): Observable<any> {
-    let { tag, startDate, endDate } = data
-    let sdate = new Date(startDate).toISOString();
-    let edate = new Date(endDate).toISOString();
+    let { tag, startMacth, endMacth } = data
+    let sdate = new Date(startMacth).toISOString();
+    let edate = new Date(endMacth).toISOString();
     const body = {
       lid: [...tag],
       rid: ["z2", "z3", "z5", "z6"],

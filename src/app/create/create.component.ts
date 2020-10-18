@@ -54,7 +54,7 @@ export class CreateComponent implements OnInit {
       async (res) => {
         if (res) {
           console.log('res->>', res);
-          await this.searchAPI(this.dataset.value);
+          // await this.searchAPI(this.dataset.value);
           this.loading = false;
           this.router.navigate(['/macth', this.macthRandom()]);
         }
@@ -63,11 +63,11 @@ export class CreateComponent implements OnInit {
       })
     console.log('form->', this.dataset.value);
   }
-  searchAPI(data: any) {
-    this.tds.searApi(data).subscribe(res => {
-      console.log('Api=>', res);
-    })
-  }
+  // searchAPI(data: any) {
+  //   this.tds.searApi(data).subscribe(res => {
+  //     console.log('Api=>', res);
+  //   })
+  // }
   logS(value: Date) {
     this.startDate = value
   }
