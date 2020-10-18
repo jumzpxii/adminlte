@@ -37,16 +37,24 @@
 
               <div class="row mb-4">
                 <div class="col">
+                  <div class="example-config">
+                    Selected value is: {{startDate | date:format}}
+                  </div>
                   <div class="example-wrapper">
                     <b>Start Date</b> :
-                    <kendo-datetimepicker [format]="format" [(value)]="startDate">
+                    <kendo-datetimepicker [placeholder]="'Match start...'" [format]="format"
+                      (valueChange)="logS($event)" formControlName="startDate">
                     </kendo-datetimepicker>
                   </div>
                 </div>
                 <div class="col">
+                  <div class="example-config">
+                    Selected value is: {{endDate | date:format}}
+                  </div>
                   <div class="example-wrapper">
                     <b>End Date</b> :
-                    <kendo-datetimepicker [format]="format" [(value)]="endDate">
+                    <kendo-datetimepicker [placeholder]="'Match end...'" [format]="format" (valueChange)="logE($event)"
+                      formControlName="endDate">
                     </kendo-datetimepicker>
                   </div>
                 </div>
@@ -55,14 +63,15 @@
               <div class="form-group row" *ngFor="let t of tags;let i = index">
                 <label class="col-sm-1 col-form-label">Tag {{ i +1 }}</label>
                 <div class="col-sm-5">
-                  <ng-select class="custom" [items]="tags" [(ngModel)]="tagSelected[i]" bindLabel="name"
-                    bindValue="name" [ngModelOptions]="{standalone: true}" placeholder="Select TagID">
+                  <ng-select class="custom" [items]="tags" [(ngModel)]="tagSelected[i]"
+                    [ngModelOptions]="{standalone: true}" bindLabel="name" bindValue="name" placeholder="Select TagID">
                   </ng-select>
                 </div>
                 <label class="col-sm-1 col-form-label">Player</label>
                 <div class="col-sm-5">
-                  <ng-select class="custom" [items]="players" [(ngModel)]="plySelected[i]" bindLabel="name"
-                    bindValue="name" [ngModelOptions]="{standalone: true}" placeholder="Select Player">
+                  <ng-select class="custom" [items]="players" [(ngModel)]="plySelected[i]"
+                    [ngModelOptions]="{standalone: true}" bindLabel="fname" bindValue="fname"
+                    placeholder="Select Player">
                   </ng-select>
                 </div>
               </div>

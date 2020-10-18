@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { PlanComponent } from './plan/plan.component';
 import { MacthComponent } from './macth/macth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlayerComponent } from './player/player.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
+import { MacthDetailComponent } from './macth/macth-detail/macth-detail.component'
+import { MyteamComponent } from './myteam/myteam.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'myteam',
     pathMatch: 'full',
-  },
-  {
-    path: 'plan',
-    component: PlanComponent,
   },
   {
     path: 'macth',
     component: MacthComponent,
   },
   {
-    path: 'profile',
+    path: 'macth/:mid',
+    component: MacthDetailComponent
+  },
+  {
+    path: 'profile/:pid',
     component: ProfileComponent
   },
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent
+  },
+  {
+    path: 'myteam',
+    component: MyteamComponent
   }
 ];
 

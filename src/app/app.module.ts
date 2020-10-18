@@ -7,7 +7,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PlanComponent } from './plan/plan.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MacthComponent } from './macth/macth.component';
 import { ChartsModule } from 'ng2-charts';
@@ -20,18 +19,22 @@ import { PlayerComponent } from './player/player.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MacthDetailComponent } from './macth/macth-detail/macth-detail.component';
+import { MyteamComponent } from './myteam/myteam.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    PlanComponent,
     MacthComponent,
     ProfileComponent,
     PlayerComponent,
     RegisterComponent,
     CreateComponent,
+    MacthDetailComponent,
+    MyteamComponent,
   ],
   imports: [
     BrowserModule,

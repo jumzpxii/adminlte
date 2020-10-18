@@ -9,14 +9,14 @@ export class MenuComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'New Macth',
-      url: '/create',
+      title: 'MyTeam',
+      url: '/myteam',
       icon: 'nav-icon fas fa-plus'
     },
     {
-      title: 'Plan',
-      url: '/plan',
-      icon: 'far fa-circle nav-icon'
+      title: 'New Macth',
+      url: '/create',
+      icon: 'nav-icon fas fa-plus'
     },
     {
       title: 'Players',

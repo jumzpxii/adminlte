@@ -13,7 +13,11 @@ export class TeamService {
     const body = data
     return this.http.post(`${this.url}/newteam`, body)
   }
-
+  // teamName: '',
+  // tag: [this.tagSelected],
+  // tagName: [this.plySelected],
+  // startDate: this.startDate,
+  // endDate: this.endDate,
   searApi(data: any): Observable<any> {
     let { tag, startDate, endDate } = data
     let sdate = new Date(startDate).toISOString();
@@ -28,6 +32,13 @@ export class TeamService {
     return this.http.post(`${this.url}/searchapi`, body);
   }
 
+  getMyteam(): Observable<any> {
+    return this.http.get(`${this.url}/myteam`);
+  }
+  getProfileteam(mid: string): Observable<any> {
+    const body = { mid: mid }
+    return this.http.post(`${this.url}/profile`, body);
+  }
   // saveDate(api: any): Observable<any>{
 
   // }
