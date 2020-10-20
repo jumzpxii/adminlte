@@ -11,24 +11,17 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   loading = false;
   form: FormGroup;
-  tags = [
-    { id: '1', name: 'TAG1' },
-    { id: '2', name: 'TAG2' },
-    { id: '3', name: 'TAG3' },
-    { id: '4', name: 'TAG4' },
-  ];
   constructor(private fb: FormBuilder, private pds: PlayerService, private router: Router) {
     this.form = this.fb.group({
+      pid: this.getUniqueId(1),
       fname: '',
       lname: '',
       position: '',
       avatar: null,
-      tag: ['', [Validators.required]]
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   submitForm() {
     this.loading = true;
@@ -37,5 +30,15 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/player']);
     })
     // console.log(this.form.value);
+  }
+
+  getUniqueId(parts: number): string {
+    const stringArr = [];
+    for (let i = 0; i < parts; i++) {
+      // tslint:disable-next-line:no-bitwise
+      const S4 = 'pid' + (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+      stringArr.push(S4);
+    }
+    return stringArr.join('-');
   }
 }

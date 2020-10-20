@@ -39,7 +39,7 @@ export class TeamService {
     const body = { mid: mid }
     return this.http.post(`${this.url}/profile`, body);
   }
-  // saveDate(api: any): Observable<any>{
-
-  // }
+  delTeam(mid: any): Observable<any> {
+    return this.http.delete(`${this.url}/del/${mid}`)
+  }
 }

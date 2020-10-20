@@ -38,8 +38,18 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
 
     this.pds.getPlayer().subscribe(res => {
-      this.players = res.data
-      console.log('this.players->>', this.players);
+      var arr = [];
+      const data = res.data;
+      for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+          const ply = {
+            pid: data[key].pid,
+            fullname: data[key].fname + ' ' + data[key].lname
+          }
+          arr.push(ply)
+        }
+      }
+      this.players = arr;
     })
   }
   // onChangeTag() {
@@ -53,21 +63,14 @@ export class CreateComponent implements OnInit {
     this.tds.createTeam(this.dataset.value).subscribe(
       async (res) => {
         if (res) {
-          console.log('res->>', res);
-          // await this.searchAPI(this.dataset.value);
           this.loading = false;
-          this.router.navigate(['/macth', this.macthRandom()]);
+          await this.router.navigate(['/macth', this.macthRandom()]);
         }
       }, (err) => {
         this.loading = false;
       })
-    console.log('form->', this.dataset.value);
   }
-  // searchAPI(data: any) {
-  //   this.tds.searApi(data).subscribe(res => {
-  //     console.log('Api=>', res);
-  //   })
-  // }
+
   logS(value: Date) {
     this.startDate = value
   }

@@ -8,7 +8,7 @@ import { TeamService } from 'src/app/shared/teams/team.service';
   styleUrls: ['./macth-detail.component.css']
 })
 export class MacthDetailComponent implements OnInit {
-  players:Array<string> = []
+  players: Array<string> = []
   teamname: string;
   count: number;
   tags: string[] = []
@@ -17,19 +17,19 @@ export class MacthDetailComponent implements OnInit {
   speed: any = [];
   zone: any = [];
   dataset: any = { tag: [], startMacth: '', endMacth: '' }
-  constructor(private routeAc: ActivatedRoute, private tds: TeamService,private ads:SewioService) {}
+  constructor(private routeAc: ActivatedRoute, private tds: TeamService, private ads: SewioService) { }
 
   ngOnInit(): void {
     let mid = this.routeAc.snapshot.params.mid
     this.tds.getProfileteam(mid).subscribe(res => {
-      // console.log('res->>', res);
+      console.log('res->>', res);
       this.teamname = res[0].team_name;
       this.dataset.startMacth = new Date(res[0].from_start);
       this.dataset.endMacth = new Date(res[0].end_time);
       this.count = res.length;
       for (const key in res) {
-          const plys = res[key].player
-          this.players.push(plys)
+        const plys = res[key].fname + ' ' + res[key].lname
+        this.players.push(plys)
       }
       this.getDistan(this.dataset);
       this.getSpeed(this.dataset);
@@ -37,32 +37,30 @@ export class MacthDetailComponent implements OnInit {
     })
 
   }
-  getDistan(data:any){
-    this.ads.distanAPI(data).subscribe(res=>{
+  getDistan(data: any) {
+    this.ads.distanAPI(data).subscribe(res => {
       let load = res.data;
       for (const key in load) {
         const tagId = load[key].label
         const val = load[key].values.pop().value;
-        this.distance.push({tag:tagId,value:val})
+        this.distance.push({ tag: tagId, value: val })
       }
     })
   }
-  getSpeed(data:any){
-    this.ads.speedAPI(data).subscribe(res=>{
+  getSpeed(data: any) {
+    this.ads.speedAPI(data).subscribe(res => {
       let load = res.data;
       for (const key in load) {
         const tagId = load[key].label
         const val = load[key].values
-        const maxVal = Math.max(...val.map(m=>m.value));
-        this.speed.push({tag:tagId,value:maxVal})
+        const maxVal = Math.max(...val.map(m => m.value));
+        this.speed.push({ tag: tagId, value: maxVal })
       }
     })
   }
-  getZone(data:any){
-    this.ads.zoneAPI(data).subscribe(res=>{
+  getZone(data: any) {
+    this.ads.zoneAPI(data).subscribe(res => {
       this.zone = res.data.zones;
-      console.log(res.data.zones);
-
     })
   }
 

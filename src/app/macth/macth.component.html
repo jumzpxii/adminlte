@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let macth of change;let i = index;">
+        <tr *ngFor="let macth of change;let i = index;" [id]="macth[0].mid">
           <td>{{ i+1 }}</td>
           <td><a>{{ macth[0].team_name }}</a><br />
             <small>
@@ -31,7 +31,7 @@
           <td>
             <ul class="list-inline">
               <li class="list-inline-item" *ngFor="let tag of macth;let j = index">
-                <img alt="Avatar" class="table-avatar" src="assets/adminlte/dist/img/avatar{{ j+2 }}.png">
+                <img alt="Avatar" class="table-avatar" src="assets/adminlte/dist/img/avatar{{ j+1 }}.png">
               </li>
             </ul>
           </td>

@@ -10,10 +10,10 @@ exports.getPlayer = (req,res) =>{
   })
 }
 exports.register = (req,res)=>{
-  const {fname,lname,position} = req.body;
-    let sql = "INSERT INTO person (fname,lname,position) VALUES ?"
+  const {pid,fname,lname,position} = req.body;
+    let sql = "INSERT INTO person (pid,fname,lname,position) VALUES ?"
     let values = [
-      [fname,lname,position]
+      [pid,fname,lname,position]
     ]
     db.query(sql,[values],(err,result)=>{
       if(err) throw err;

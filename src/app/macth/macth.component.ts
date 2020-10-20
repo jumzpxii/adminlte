@@ -22,8 +22,10 @@ export class MacthComponent implements OnInit {
       console.log('this.change->>', this.change);
     })
   }
-  onDelMid(mid:string){
-    console.log(mid);
-
+  onDelMid(mid: string) {
+    const el = document.getElementById(mid)
+    this.tds.delTeam(mid).subscribe(res => {
+      el.remove();
+    })
   }
 }

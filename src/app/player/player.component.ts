@@ -59,7 +59,6 @@ export class PlayerComponent implements OnInit {
         this.pds.delPlayer(delid).subscribe(res => {
           this.renderer.removeChild('tr', removeel)
         })
-        // this.router.navigate(["/person/" + event.target.getAttribute("view-person-id")]);
       }
     });
   }
