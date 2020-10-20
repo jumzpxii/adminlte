@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SewioService } from 'src/app/shared/api/sewio.service';
 import { TeamService } from 'src/app/shared/teams/team.service';
 @Component({
   selector: 'app-macth-detail',
@@ -7,43 +8,85 @@ import { TeamService } from 'src/app/shared/teams/team.service';
   styleUrls: ['./macth-detail.component.css']
 })
 export class MacthDetailComponent implements OnInit {
+  players:Array<string> = []
   teamname: string;
   count: number;
   tags: string[] = []
   searchApi: any;
-  distance: any;
-  speed: any;
-  zone: any;
+  distance: any = [];
+  speed: any = [];
+  zone: any = [];
   dataset: any = { tag: [], startMacth: '', endMacth: '' }
-  constructor(private routeAc: ActivatedRoute, private tds: TeamService) { }
+  constructor(private routeAc: ActivatedRoute, private tds: TeamService,private ads:SewioService) {}
 
   ngOnInit(): void {
     let mid = this.routeAc.snapshot.params.mid
     this.tds.getProfileteam(mid).subscribe(res => {
-      console.log('res->>', res);
+      // console.log('res->>', res);
       this.teamname = res[0].team_name;
       this.dataset.startMacth = new Date(res[0].from_start);
       this.dataset.endMacth = new Date(res[0].end_time);
       this.count = res.length;
       for (const key in res) {
-        if (Object.prototype.hasOwnProperty.call(res, key)) {
-          const element = res[key].tag_id;
-          this.dataset.tag.push(element)
-        }
+          const plys = res[key].player
+          this.players.push(plys)
       }
-      this.getAPI(this.dataset);
+      this.getDistan(this.dataset);
+      this.getSpeed(this.dataset);
+      this.getZone(this.dataset);
+    })
+
+  }
+  getDistan(data:any){
+    this.ads.distanAPI(data).subscribe(res=>{
+      let load = res.data;
+      for (const key in load) {
+        const tagId = load[key].label
+        const val = load[key].values.pop().value;
+        this.distance.push({tag:tagId,value:val})
+      }
     })
   }
-  getAPI(data: any) {
-    this.tds.searApi(data).subscribe((res) => {
-      this.distance = res.distanX;
-      this.zone = res.zoneX;
-      this.speed = res.speedX;
-      console.log('this.distance->>', this.distance);
-      console.log('this.zone->>', this.zone);
-      console.log('this.speed->>', this.speed);
+  getSpeed(data:any){
+    this.ads.speedAPI(data).subscribe(res=>{
+      let load = res.data;
+      for (const key in load) {
+        const tagId = load[key].label
+        const val = load[key].values
+        const maxVal = Math.max(...val.map(m=>m.value));
+        this.speed.push({tag:tagId,value:maxVal})
+      }
     })
   }
+  getZone(data:any){
+    this.ads.zoneAPI(data).subscribe(res=>{
+      this.zone = res.data.zones;
+      console.log(res.data.zones);
+
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  // getAPI(data: any) {
+  //   this.tds.searApi(data).subscribe((res) => {
+  //     this.distance = res.distanX;
+  //     this.zone = res.zoneX;
+  //     this.speed = res.speedX;
+  //     console.log('this.distance->>', this.distance);
+  //     console.log('this.zone->>', this.zone);
+  //     console.log('this.speed->>', this.speed);
+  //   })
+  // }
 
 }
 

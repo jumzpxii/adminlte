@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const teamRoute = require("./rotues/team");
 const playerRoute = require("./rotues/player");
+const apiRoute = require("./rotues/api");
 // const db = require('./connection/connect');
 const port = process.env.PORT || 3000;
 
@@ -17,6 +18,7 @@ app.options("*", cors());
 
 app.use("/team", teamRoute);
 app.use("/player", playerRoute);
+app.use("/api", apiRoute);
 
 app.listen(port, function () {
   console.log(`server is : http://localhost:${port}`);

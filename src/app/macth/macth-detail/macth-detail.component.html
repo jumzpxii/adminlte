@@ -1,12 +1,14 @@
 <div class="row">
   <div class="col-md-3">
-
     <!-- Profile Image -->
     <div class="card card-primary card-outline">
       <div class="card-body box-profile">
         <div class="text-center">
-          <img class="profile-user-img img-fluid img-circle" src="assets/adminlte/dist/img/user4-128x128.jpg"
-            alt="User profile picture">
+          <img
+            class="profile-user-img img-fluid img-circle"
+            src="assets/adminlte/dist/img/user4-128x128.jpg"
+            alt="User profile picture"
+          />
         </div>
 
         <h3 class="profile-username text-center">{{ teamname }}</h3>
@@ -18,10 +20,16 @@
             <b>สมาชิก</b> <a class="float-right">{{ count }}</a>
           </li>
           <li class="list-group-item">
-            <b>เริ่มแข่งขัน</b> <a class="float-right">{{ dataset.startMacth | date:'dd/MM/yyyy HH:mm' + ' น.'}}</a>
+            <b>เริ่มแข่งขัน</b>
+            <a class="float-right">{{
+              dataset.startMacth | date: "dd/MM/yyyy HH:mm" + " น."
+            }}</a>
           </li>
           <li class="list-group-item">
-            <b>สิ้นสุด</b> <a class="float-right">{{ dataset.endMacth | date:'dd/MM/yyyy HH:mm' + ' น.'}}</a>
+            <b>สิ้นสุด</b>
+            <a class="float-right">{{
+              dataset.endMacth | date: "dd/MM/yyyy HH:mm" + " น."
+            }}</a>
           </li>
         </ul>
       </div>
@@ -36,24 +44,27 @@
     <div class="card">
       <div class="card-body">
         <h3 class="text-primary">Distance</h3>
-        <dl class="row" *ngFor="let dt of distance;let i = index;">
-          <dt class="col-sm-3">{{ dt.label }}</dt>
-          <dd class="col-sm-9" *ngIf="dt.values.length-1">{{dt.values.value}}</dd>
+        <dl class="row" *ngFor="let dt of distance; let i = index">
+          <dt class="col-sm-3">{{ dt.tag }} - [{{ players[i] }}]</dt>
+          <dd class="col-sm-9">{{ dt.value | number: "1.0-2" }} เมตร</dd>
         </dl>
-        <hr>
-        <h3 class="text-primary">sss</h3>
-        <dl class="row">
-          <dt class="col-sm-3">Description lists</dt>
-          <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+        <hr />
+        <h3 class="text-primary">Speed</h3>
+        <dl class="row" *ngFor="let sp of speed; let i = index">
+          <dt class="col-sm-3">{{ sp.tag }} - [{{ players[i] }}]</dt>
+          <dd class="col-sm-9">{{ sp.value | number: "1.0-2" }} เมตร/วินาที</dd>
         </dl>
-        <hr>
-        <h3 class="text-primary">sss</h3>
-        <dl class="row">
-          <dt class="col-sm-3">Description lists</dt>
-          <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-        </dl>
-        <hr>
-      </div><!-- /.card-body -->
+        <hr />
+        <div *ngFor="let z of zone;let i = index">
+          <h3 class="text-primary">{{ z.name }}</h3>
+          <dl class="row" *ngFor="let t of z.tags;let j = index">
+            <dt class="col-sm-3">{{ t.tag }} - [{{ players[j] }}]</dt>
+            <dd class="col-sm-9">{{ t.count | number: "1.0-2" }} / วินาที</dd>
+          </dl>
+          <hr />
+        </div>
+      </div>
+      <!-- /.card-body -->
     </div>
     <!-- /.nav-tabs-custom -->
   </div>
