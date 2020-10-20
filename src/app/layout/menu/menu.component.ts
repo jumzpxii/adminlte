@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
   public appPages = [
     {
       title: 'MyTeam',
-      url: '/myteam',
+      url: '/macth',
       icon: 'nav-icon fas fa-plus'
     },
     {
