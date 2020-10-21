@@ -21,6 +21,8 @@ import { CreateComponent } from './create/create.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MacthDetailComponent } from './macth/macth-detail/macth-detail.component';
 import { MyteamComponent } from './myteam/myteam.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { MyteamComponent } from './myteam/myteam.component';
     CreateComponent,
     MacthDetailComponent,
     MyteamComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { MyteamComponent } from './myteam/myteam.component';
     BrowserAnimationsModule,
     DataTablesModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

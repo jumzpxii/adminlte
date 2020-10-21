@@ -8,41 +8,49 @@ import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
 import { MacthDetailComponent } from './macth/macth-detail/macth-detail.component'
 import { MyteamComponent } from './myteam/myteam.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'myteam',
+  //   pathMatch: 'full',
+  // },
   {
-    path: '',
-    redirectTo: 'myteam',
-    pathMatch: 'full',
+    path:'login',
+    component:LoginComponent
   },
   {
     path: 'macth',
     component: MacthComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'macth/:mid',
-    component: MacthDetailComponent
+    component: MacthDetailComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'profile/:pid',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'player',
-    component: PlayerComponent
+    component: PlayerComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'create',
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate:[AuthGuard]
   },
-  {
-    path: 'myteam',
-    component: MyteamComponent
-  }
 ];
 
 @NgModule({
