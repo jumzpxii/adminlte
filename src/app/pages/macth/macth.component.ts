@@ -19,7 +19,7 @@ export class MacthComponent implements OnInit {
       for (const key in this.macthData) {
         this.change.push(this.macthData[key]);
       }
-      console.log('this.change->>', this.change);
+      // console.log('this.change->>', this.change);
     })
   }
   onDelMid(mid: string) {

@@ -11,20 +11,29 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   loading = false;
   form: FormGroup;
+  submitted = false;
   constructor(private fb: FormBuilder, private pds: PlayerService, private router: Router) {
     this.form = this.fb.group({
       pid: this.getUniqueId(1),
-      fname: '',
-      lname: '',
-      position: '',
+      fname: ['',[Validators.required]],
+      lname: ['',[Validators.required]],
+      position: ['',[Validators.required]],
       avatar: null,
     })
   }
 
   ngOnInit(): void { }
+  // convenience getter for easy access to form fields
+  get f() { return this.form.controls; }
 
   submitForm() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.form.invalid) {
+        return;
+    }
     this.loading = true;
+
     this.pds.register(this.form.value).subscribe(res => {
       this.loading = false;
       this.router.navigate(['/player']);
