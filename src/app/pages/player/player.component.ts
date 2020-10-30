@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { PlayerService } from '../shared/players/player.service';
+import { PlayerService } from '../../shared/players/player.service';
 import { Router } from '@angular/router';
 
 @Component({

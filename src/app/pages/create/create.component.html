@@ -37,9 +37,6 @@
 
               <div class="row mb-4">
                 <div class="col">
-                  <div class="example-config">
-                    Selected value is: {{startDate | date:format}}
-                  </div>
                   <div class="example-wrapper">
                     <b>Start Date</b> :
                     <kendo-datetimepicker [placeholder]="'Match start...'" [format]="format"
@@ -48,9 +45,6 @@
                   </div>
                 </div>
                 <div class="col">
-                  <div class="example-config">
-                    Selected value is: {{endDate | date:format}}
-                  </div>
                   <div class="example-wrapper">
                     <b>End Date</b> :
                     <kendo-datetimepicker [placeholder]="'Match end...'" [format]="format" (valueChange)="logE($event)"

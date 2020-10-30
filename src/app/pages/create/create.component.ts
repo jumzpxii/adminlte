@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { TeamService } from '../shared/teams/team.service'
+import { TeamService } from '../../shared/teams/team.service'
 import { Router } from '@angular/router';
-import { PlayerService } from '../shared/players/player.service';
+import { PlayerService } from '../../shared/players/player.service';
 
 @Component({
   selector: 'app-create',

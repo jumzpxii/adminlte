@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../shared/teams/team.service';
+import { TeamService } from '../../shared/teams/team.service';
 @Component({
-  selector: 'app-myteam',
-  templateUrl: './myteam.component.html',
-  styleUrls: ['./myteam.component.css']
+  selector: 'app-macth',
+  templateUrl: './macth.component.html',
+  styleUrls: ['./macth.component.css'],
 })
-export class MyteamComponent implements OnInit {
+export class MacthComponent implements OnInit {
   change: any = [];
   macthData: Array<any> = [];
   constructor(private tds: TeamService) { }
@@ -19,7 +19,13 @@ export class MyteamComponent implements OnInit {
       for (const key in this.macthData) {
         this.change.push(this.macthData[key]);
       }
-      // console.log('this.change->>', this.change);
+      console.log('this.change->>', this.change);
+    })
+  }
+  onDelMid(mid: string) {
+    const el = document.getElementById(mid)
+    this.tds.delTeam(mid).subscribe(res => {
+      el.remove();
     })
   }
 }

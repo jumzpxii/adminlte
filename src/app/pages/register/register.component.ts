@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PlayerService } from '../shared/players/player.service';
+import { PlayerService } from '../../shared/players/player.service';
 import { Router } from '@angular/router';
 
 @Component({
