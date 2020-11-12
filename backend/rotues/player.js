@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 router.get('/get',playerController.getPlayer);
+router.get('/profile/:pid',playerController.getProfile);
 router.post('/register',playerController.register);
 router.delete('/del/:id',playerController.delPlayer);
 

@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
               <app-menu></app-menu>
               <div class="content-wrapper p-3" style="min-height: 304px;">
                 <router-outlet></router-outlet>
-              </div>
-            <app-footer></app-footer>`,
+              </div>`,
 })
 export class PagesComponent implements OnInit {
 

@@ -22,7 +22,7 @@ export class PlayerComponent implements OnInit {
       ajax: 'http://localhost:3000/player/get',
       columns: [{
         title: 'ID',
-        data: 'id'
+        data: 'pid'
       }, {
         title: 'First name',
         data: 'fname'
@@ -35,8 +35,8 @@ export class PlayerComponent implements OnInit {
       }, {
         title: 'Action',
         render: function (data: any, type: any, full: any) {
-          return `<button class="btn btn-primary" view-id="${full.id}">View</button>
-                  <button class="btn btn-danger" del-id="${full.id}">Delete</button>`
+          return `<button class="btn btn-primary" view-id="${full.pid}">View</button>
+                  <button class="btn btn-danger" del-id="${full.pid}">Delete</button>`
         }
       }],
     }
@@ -45,8 +45,8 @@ export class PlayerComponent implements OnInit {
   viewPlayer() {
     this.renderer.listen('document', 'click', (event) => {
       if (event.target.hasAttribute("view-id")) {
-        console.log('event-view>>', event.target.getAttribute("view-id"));
-        // this.router.navigate(["/person/" + event.target.getAttribute("view-person-id")]);
+        // console.log('event-view>>', event.target.getAttribute("view-id"));
+        this.router.navigate(["/player/" + event.target.getAttribute("view-id")]);
       }
     });
   }

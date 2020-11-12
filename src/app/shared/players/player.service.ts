@@ -10,6 +10,9 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
+  getProfile(pid: string): Observable<any> {
+    return this.http.get(`${this.playerRoute}/profile/${pid}`)
+  }
   getPlayer(): Observable<any> {
     return this.http.get(`${this.playerRoute}/get`);
   }

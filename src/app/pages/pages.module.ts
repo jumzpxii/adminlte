@@ -24,6 +24,7 @@ import { RegisterComponent } from '../pages/register/register.component';
 import { CreateComponent } from '../pages/create/create.component';
 import { MacthDetailComponent } from '../pages/macth/macth-detail/macth-detail.component';
 import { MyteamComponent } from '../pages/myteam/myteam.component';
+import { PlyerDetailComponent } from './player/plyer-detail/plyer-detail.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MyteamComponent } from '../pages/myteam/myteam.component';
     CreateComponent,
     MacthDetailComponent,
     MyteamComponent,
+    PlyerDetailComponent,
   ],
   imports: [
     CommonModule,

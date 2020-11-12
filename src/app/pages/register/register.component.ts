@@ -15,9 +15,9 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private pds: PlayerService, private router: Router) {
     this.form = this.fb.group({
       pid: this.getUniqueId(1),
-      fname: ['',[Validators.required]],
-      lname: ['',[Validators.required]],
-      position: ['',[Validators.required]],
+      fname: ['', [Validators.required]],
+      lname: ['', [Validators.required]],
+      position: ['', [Validators.required]],
       avatar: null,
     })
   }
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.form.invalid) {
-        return;
+      return;
     }
     this.loading = true;
 

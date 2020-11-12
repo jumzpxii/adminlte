@@ -24,8 +24,6 @@ export class MacthComponent implements OnInit {
   }
   onDelMid(mid: string) {
     const el = document.getElementById(mid)
-    this.tds.delTeam(mid).subscribe(res => {
-      el.remove();
-    })
+    this.tds.delTeam(mid).subscribe(res => el.remove())
   }
 }

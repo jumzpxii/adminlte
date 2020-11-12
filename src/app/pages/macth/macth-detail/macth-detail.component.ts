@@ -22,7 +22,7 @@ export class MacthDetailComponent implements OnInit {
   ngOnInit(): void {
     let mid = this.routeAc.snapshot.params.mid
     this.tds.getProfileteam(mid).subscribe(res => {
-      console.log('res->>', res);
+      // console.log('res->>', res);
       this.teamname = res[0].team_name;
       this.dataset.startMacth = new Date(res[0].from_start);
       this.dataset.endMacth = new Date(res[0].end_time);

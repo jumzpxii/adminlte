@@ -9,6 +9,15 @@ exports.getPlayer = (req,res) =>{
     })
   })
 }
+
+exports.getProfile = (req,res) =>{
+  const value = req.params.pid
+  const sql = 'SELECT a.*, b.fname, b.lname , b.lname, b.position FROM teams AS a LEFT JOIN person AS b ON a.player = b.pid WHERE a.player = ?';
+  db.query(sql,[value],(err,result)=>{
+    res.json(result)
+  })
+}
+
 exports.register = (req,res)=>{
   const {pid,fname,lname,position} = req.body;
     let sql = "INSERT INTO person (pid,fname,lname,position) VALUES ?"
