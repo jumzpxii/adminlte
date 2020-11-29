@@ -31,8 +31,8 @@ exports.register = (req,res)=>{
 }
 
 exports.delPlayer = (req,res)=>{
-  const value = req.params.id
-  let = sql = "DELETE FROM person WHERE id = ?";
+  const value = req.params.pid
+  let = sql = "DELETE FROM person WHERE pid = ?";
   db.query(sql,[value],(err,result)=>{
     if(err) throw err;
     res.json({status:"Delete 1 Person"})
